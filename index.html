@@ -27,6 +27,29 @@
         a{
             text-decoration: none;
         }
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+        }
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+                flex-direction: column;
+                background-color: #f8c146;
+                position: absolute;
+                top: 60px;
+                right: 20px;
+                padding: 10px;
+                border-radius: 5px;
+            }
+            .nav.active {
+                display: flex;
+            }
+            .hamburger {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
@@ -34,8 +57,11 @@
     <header class="bg-warning py-3 shadow">
         <div class="container d-flex justify-content-between align-items-center">
             <h1 class="logo text-dark">Vanitha's Home Food</h1>
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
             <nav>
-                <ul class="nav">
+                <ul class="nav" id="nav-links">
                     <li class="nav-item"><a href="#about" class="nav-link text-dark">About</a></li>
                     <li class="nav-item"><a href="#menu" class="nav-link text-dark">Menu</a></li>
                     <li class="nav-item"><a href="#order" class="nav-link text-dark">Order</a></li>
@@ -132,10 +158,11 @@
     <section id="contact" class="section py-5">
         <div class="container">
             <h2 class="text-center mb-4">Contact Us</h2>
-
             <p class="text-center">Have any questions? We'd love to hear from you!</p>
             <div style="display: flex; align-items: center; justify-content: center; gap: 20px;"><label for="">Email: vanithahomefood@gmail.com</label>
-            <label for="">Contact No. +91 9014055877</label></div>
+        </div>
+        <div class="container">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 20px;"><label for="">Contact No. +91 9014055877</label>
         </div>
     </section>
 
@@ -146,5 +173,11 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
